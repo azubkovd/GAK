@@ -70,8 +70,16 @@ class AplLine
             pillarLng+=deltaLng;
             var pillar = new PillarMarker(L.latLng(pillarLat, pillarLng),{draggable: true, isBase:false},this.map);
             pillar.addTo(this.map);
-            if (i) this.PillarArray[i].addToBetween(pillar,this.endPillar);
-            else this.startPillar.addToBetween(pillar,this.endPillar);
+            if (i)
+            {
+                this.PillarArray[i].addToBetween(pillar,this.endPillar);
+                pillar.cloneCutAndMaterial(this.PillarArray[i]);
+            }
+            else
+            {
+                this.startPillar.addToBetween(pillar,this.endPillar);
+                pillar.cloneCutAndMaterial(this.startPillar);
+            }
             this.PillarArray.push(pillar);
             pillar.setParentLine(this);
             pillar.setPillarIcon(this.visPillarAttr.PillarIconMap, null);

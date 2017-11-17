@@ -463,4 +463,10 @@ var PillarMarker=L.Marker.extend(
           else return false;
         },
         
+        cloneCutAndMaterial(pillar)
+        {
+            this.pillarCut=pillar.pillarCut;
+            this.pillarMaterial=pillar.pillarMaterial;
+        }
+        
       });

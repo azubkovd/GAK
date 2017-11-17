@@ -384,10 +384,12 @@ class VisPillarAttr
         if (this.actPillar && this.addPillarToForwardSelect)
         {
             this.actPillar.addToForward(marker);
+            marker.cloneCutAndMaterial(this.actPillar);
         }
         if (this.actPillar && this.addPillarToBackSelect)
         {
             this.actPillar.addToBack(marker);
+            marker.cloneCutAndMaterial(this.actPillar);
         }
         this.SelectPillar(marker);
         this.addPillarToForwardSelect=false;
@@ -400,6 +402,7 @@ class VisPillarAttr
     addPillarToTap(e)
     {
         var marker = new PillarMarker(e.latlng,{draggable: true, isBase: true},this.map, this).addTo(this.map);
+        if (this.actPillar) marker.cloneCutAndMaterial(this.actPillar);
         this.setAngularPillar(marker);
         this.actPillar.addToTap(marker);
         this.SelectPillar(marker);
